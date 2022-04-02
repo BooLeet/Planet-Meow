@@ -5,7 +5,7 @@ using UnityEngine;
 public class FPSCounter : MonoBehaviour
 {
     float deltaTime = 0.0f;
-    bool show = false;
+    public bool show = false;
     public Font font;
 
     void Update()
@@ -35,7 +35,10 @@ public class FPSCounter : MonoBehaviour
         Rect rect = new Rect(10, 0, w, h * 4 / 100);
         style.alignment = TextAnchor.UpperLeft;
         style.fontSize = h * 2 / 100;
-        style.font = font;
+        if (font)
+        {
+            style.font = font;
+        }
         style.normal.textColor = Color.white;
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
