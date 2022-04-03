@@ -6,8 +6,10 @@ using static UnityEngine.Mathf;
 
 public class SphericalMovement : MonoBehaviour
 {
+    public float radius = 0.5f;
     public float sphereRadius = 5;
     public float movementSpeed = 0;
+    public bool allowCorrection = false;
 
     public Vector2 startingCoordinates;
     
@@ -52,25 +54,33 @@ public class SphericalMovement : MonoBehaviour
     {
         SetLat(startingCoordinates.x);
         SetLon(startingCoordinates.y);
+
+        SphericalMovementRegistry.Register(this);
     }
 
-    void FixedUpdate()
+    private void OnDestroy()
+    {
+        SphericalMovementRegistry.Unregister(this);
+    }
+
+    public void MoveForward(float distance)
+    {
+        Move(currentBearing, distance);
+    }
+
+    public void Move(float bearing, float distance)
     {
         if (movementSpeed <= 0)
         {
             return;
         }
-        Move(movementSpeed * Time.fixedDeltaTime);
-    }
 
-    private void Move(float distance)
-    {
-        Vector2 newCoordinates = GetForwardCoordinates(distance);
+        Vector2 newCoordinates = GetDestinationCoordinates(bearing, distance);
 
         float finalBearing = (GetBearing(newCoordinates, currentCoordinates) + PI) % (2 * PI);
-        azimuthCorrection += finalBearing - currentBearing;
-        SetTrueBearing(finalBearing);
-        currentConditionalBearing = currentBearing - azimuthCorrection;
+        azimuthCorrection += finalBearing - bearing;
+
+        SetTrueBearing(currentConditionalBearing + azimuthCorrection);
 
         currentCoordinates = newCoordinates;
         OnCoordinatesChanged?.Invoke();
@@ -91,7 +101,7 @@ public class SphericalMovement : MonoBehaviour
         return new Vector2(latDestination, lonDestination);
     }
 
-    private float TrimAngleRad(float val)
+    private static float TrimAngleRad(float val)
     {
         val %= 2 * PI;
         if (val < 0)
@@ -102,14 +112,25 @@ public class SphericalMovement : MonoBehaviour
         return val;
     }
 
-    private float GetBearing(Vector2 start, Vector2 end)
+    public static float GetBearing(Vector2 start, Vector2 end)
     {
         return TrimAngleRad(Atan2(Sin(end.y - start.y) * Cos(end.x), Cos(start.x) * Sin(end.x) - Sin(start.x) * Cos(end.x) * Cos(end.y - start.y)));
+    }
+
+    public float GetDistance(Vector2 start, Vector2 end)
+    {
+        float deltaLat = end.x - start.x;
+        float deltaLon = end.y - start.y;
+        float a = Pow(Sin(deltaLat / 2), 2) + Cos(start.x) * Cos(end.x) * Pow(Sin(deltaLon / 2), 2);
+        float c = 2 * Atan2(Sqrt(a), Sqrt(1 - a));
+
+        return sphereRadius * c;
     }
 
     public void SetTrueBearing(float val)
     {
         currentBearing = TrimAngleRad(val);
+        currentConditionalBearing = currentBearing - azimuthCorrection;
         OnBearingChanged?.Invoke();
     }
 

@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    public SphericalMovement movement;
-    public float moveSpeed = 5;
     public float smoothTurnParameter = 10;
     private float targetBearing;
     private float currentBearing;
-
-    void Start()
-    {
-        
-    }
 
 
     void Update()
