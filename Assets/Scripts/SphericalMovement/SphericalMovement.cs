@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Mathf;
 
@@ -10,6 +8,7 @@ public class SphericalMovement : MonoBehaviour
     public float sphereRadius = 5;
     public float movementSpeed = 0;
     public bool allowCorrection = false;
+    public bool correctOthers = true;
 
     public Vector2 startingCoordinates;
     
@@ -49,6 +48,8 @@ public class SphericalMovement : MonoBehaviour
 
     public event Action OnCoordinatesChanged;
     public event Action OnBearingChanged;
+
+    public event Action<SphericalMovement> OnCollision;
 
     private void Start()
     {
@@ -161,5 +162,10 @@ public class SphericalMovement : MonoBehaviour
         Vector3 temp = currentCoordinates;
         temp.y = val;
         currentCoordinates = temp;
+    }
+
+    public void InvokeOnCollision(SphericalMovement other)
+    {
+        OnCollision?.Invoke(other);
     }
 }

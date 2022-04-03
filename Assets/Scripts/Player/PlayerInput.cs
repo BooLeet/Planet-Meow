@@ -9,7 +9,14 @@ public abstract class PlayerInput : MonoBehaviour
     protected void Update()
     {
         player.Move(GetMoveInput());
+
+        if (GetAttack())
+        {
+            player.Attack();
+        }
     }
 
     protected abstract Vector2 GetMoveInput();
+
+    protected abstract bool GetAttack();
 }

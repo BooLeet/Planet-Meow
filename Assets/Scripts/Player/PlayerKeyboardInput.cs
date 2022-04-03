@@ -8,4 +8,9 @@ public class PlayerKeyboardInput : PlayerInput
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
+
+    protected override bool GetAttack()
+    {
+        return Input.GetMouseButton(0);
+    }
 }

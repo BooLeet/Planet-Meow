@@ -78,4 +78,9 @@ public class PlayerMobileInput : PlayerInput
 
         return input.normalized;
     }
+
+    protected override bool GetAttack()
+    {
+        return GetMoveInput().magnitude > 0;
+    }
 }

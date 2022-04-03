@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4321686339752711947}
   - component: {fileID: 4321686339752711946}
   - component: {fileID: 4321686339752711950}
-  - component: {fileID: 4321686339752711945}
+  - component: {fileID: 7881087119371029133}
+  - component: {fileID: 8669680405009305397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -47,9 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1304db78fb6a914396820d6ba27bbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 0.5
   sphereRadius: 7.5
   movementSpeed: 4
-  startingCoordinates: {x: 0, y: 0}
+  allowCorrection: 1
+  correctOthers: 1
+  startingCoordinates: {x: -0.3405, y: -0.228}
 --- !u!114 &4321686339752711946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,19 +84,43 @@ MonoBehaviour:
   movement: {fileID: 4321686339752711947}
   moveSpeed: 5
   smoothTurnParameter: 10
---- !u!114 &4321686339752711945
+  smoothMoveParameter: 10
+  attackDamage: 10
+  projectileSpeed: 20
+  projectileLifeTime: 1
+  projectileSpawnDistance: 0.4
+  attackDelay: 0.2
+  projectilePool: {fileID: 0}
+--- !u!114 &7881087119371029133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4321686339752711925}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a994669f8b96b1b4c987d02bff7daead, type: 3}
+  m_Script: {fileID: 11500000, guid: de8ceba917788734380271c6ce7dcf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4321686339752711950}
+  maxHealth: 100
+--- !u!114 &8669680405009305397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321686339752711925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7baa6015309d64aba5a26dbb079c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 4321686339752711950}
+  animator: {fileID: 4227651582087040709}
+  attackTriggers:
+  - SpellRight
+  - SpellLeft
 --- !u!1001 &4321686340222010067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +131,14 @@ PrefabInstance:
     - target: {fileID: 1348968765104238, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
       propertyPath: m_Name
       value: MagicCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399931042691430, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399931042691430, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4731472663689260, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
       propertyPath: m_RootOrder
@@ -153,5 +189,10 @@ PrefabInstance:
 --- !u!4 &4317115770467613439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4731472663689260, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
+  m_PrefabInstance: {fileID: 4321686340222010067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4227651582087040709 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95160958703225878, guid: 68c8ece1140633c489d5595e6ec45079, type: 3}
   m_PrefabInstance: {fileID: 4321686340222010067}
   m_PrefabAsset: {fileID: 0}

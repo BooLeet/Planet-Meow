@@ -26,9 +26,16 @@ public class SphericalMovementRegistry : MonoBehaviour
 
     private void FixedUpdate()
     {
+        bool[,] collisions = new bool[registeredMovements.Count, registeredMovements.Count];
+
         for (int i = 0; i < registeredMovements.Count; ++i)
         {
             SphericalMovement currentMovement = registeredMovements[i];
+
+            if (!currentMovement.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
             currentMovement.MoveForward(currentMovement.movementSpeed * Time.fixedDeltaTime);
             if (!currentMovement.allowCorrection)
             {
@@ -37,7 +44,7 @@ public class SphericalMovementRegistry : MonoBehaviour
 
             for (int j = 0; j < registeredMovements.Count; ++j)
             {
-                if (i == j)
+                if (i == j || !registeredMovements[j].gameObject.activeInHierarchy)
                 {
                     continue;
                 }
@@ -49,10 +56,31 @@ public class SphericalMovementRegistry : MonoBehaviour
                     continue;
                 }
 
+                collisions[i, j] = true;
+
+                if (!otherMovement.correctOthers)
+                {
+                    continue;
+                }
+
                 float correctionBearing = SphericalMovement.GetBearing(otherMovement.currentCoordinates, currentMovement.currentCoordinates);
                 float correctionDistance = currentMovement.radius + otherMovement.radius - distance;
 
                 currentMovement.Move(correctionBearing, correctionDistance);
+            }
+        }
+
+        for (int i = 0; i < registeredMovements.Count; ++i)
+        {
+            for (int j = 0; j < registeredMovements.Count; ++j)
+            {
+                if (!collisions[i, j])
+                {
+                    continue;
+                }
+
+                registeredMovements[i].InvokeOnCollision(registeredMovements[j]);
+                registeredMovements[j].InvokeOnCollision(registeredMovements[i]);
             }
         }
     }

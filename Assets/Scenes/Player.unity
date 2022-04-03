@@ -171,6 +171,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 0.69813174}
 --- !u!1 &15897003
 GameObject:
@@ -818,6 +819,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.87266463, y: 4.1887903}
 --- !u!1 &150851477
 GameObject:
@@ -979,6 +981,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.87266463, y: 2.0943952}
 --- !u!1 &160179320
 GameObject:
@@ -1206,6 +1209,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 2.0943952}
 --- !u!1 &197298410
 GameObject:
@@ -1236,7 +1240,7 @@ Transform:
   m_Children:
   - {fileID: 1705026996}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &203080719
 GameObject:
@@ -1317,6 +1321,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.87266463, y: 0}
 --- !u!1 &216032932
 GameObject:
@@ -1367,6 +1372,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 2.792527}
 --- !u!1 &220655069
 GameObject:
@@ -1521,6 +1527,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 0}
 --- !u!1 &236827293
 GameObject:
@@ -1601,6 +1608,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 4.712389}
 --- !u!1 &260201242
 GameObject:
@@ -1650,6 +1658,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.5235988, y: 1.5707964}
 --- !u!1 &270416714
 GameObject:
@@ -1700,6 +1709,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 1.5707964}
 --- !u!4 &283278856 stripped
 Transform:
@@ -1754,6 +1764,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 2.792527}
 --- !u!1 &299423641
 GameObject:
@@ -2048,6 +2059,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 2.3561945}
 --- !u!1 &359259827
 GameObject:
@@ -2159,7 +2171,7 @@ Transform:
   m_Children:
   - {fileID: 26083159}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -15.895, y: 0, z: 0}
 --- !u!1 &370793793
 GameObject:
@@ -2918,6 +2930,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 4.886922}
 --- !u!1 &480237036
 GameObject:
@@ -3080,6 +3093,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 0}
 --- !u!1 &516053944
 GameObject:
@@ -3673,6 +3687,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 0}
 --- !u!1 &598490790
 GameObject:
@@ -3723,6 +3738,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.5235988, y: 5.4977875}
 --- !u!1 &609607073
 GameObject:
@@ -3848,6 +3864,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.5235988, y: 0}
 --- !u!1 &636224838
 GameObject:
@@ -4263,6 +4280,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.87266463, y: 0}
 --- !u!1 &685046941
 GameObject:
@@ -4562,6 +4580,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 1.3962635}
 --- !u!1 &727913406
 GameObject:
@@ -5005,7 +5024,7 @@ Transform:
   - {fileID: 728818104}
   - {fileID: 26278786}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 150, z: 0}
 --- !u!1 &785642637
 GameObject:
@@ -5403,7 +5422,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825705290
 GameObject:
@@ -5498,6 +5517,7 @@ GameObject:
   - component: {fileID: 826798188}
   - component: {fileID: 826798187}
   - component: {fileID: 826798190}
+  - component: {fileID: 826798191}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5536,6 +5556,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 4
   allowCorrection: 1
+  correctOthers: 1
   startingCoordinates: {x: 0, y: 0}
 --- !u!4 &826798189
 Transform:
@@ -5550,7 +5571,7 @@ Transform:
   m_Children:
   - {fileID: 283278856}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &826798190
 MonoBehaviour:
@@ -5566,6 +5587,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 826798188}
   moveSpeed: 5
+--- !u!114 &826798191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826798186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8ceba917788734380271c6ce7dcf7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &830626245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,6 +6003,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.87266463, y: 2.0943952}
 --- !u!1 &872953086
 GameObject:
@@ -6050,6 +6085,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -1.2217305, y: 0}
 --- !u!1 &881038083
 GameObject:
@@ -6290,7 +6326,7 @@ Transform:
   m_LocalScale: {x: 15.2, y: 15.2, z: 15.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908044887
 GameObject:
@@ -6422,6 +6458,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 3.4906585}
 --- !u!1 &917761907
 GameObject:
@@ -6980,6 +7017,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 1.3962635}
 --- !u!1 &976376397
 GameObject:
@@ -7049,7 +7087,7 @@ Transform:
   - {fileID: 873897977}
   - {fileID: 1116323570}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &976376399
 MonoBehaviour:
@@ -7195,7 +7233,7 @@ RectTransform:
   m_Children:
   - {fileID: 220655072}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7500,6 +7538,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 0.69813174}
 --- !u!1 &1021943552
 GameObject:
@@ -7975,6 +8014,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -1.2217305, y: 3.1415927}
 --- !u!1001 &1133448052
 PrefabInstance:
@@ -8272,6 +8312,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 1.2217305, y: 0}
 --- !u!1 &1144491120
 GameObject:
@@ -8444,6 +8485,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 3.4906585}
 --- !u!1 &1151399882
 GameObject:
@@ -10256,6 +10298,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.17453294, y: 5.585054}
 --- !u!1 &1452627953
 GameObject:
@@ -10306,6 +10349,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 0.7853982}
 --- !u!1 &1466977860
 GameObject:
@@ -10355,7 +10399,7 @@ Transform:
   m_Children:
   - {fileID: 1103117409}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1475691220
 GameObject:
@@ -10437,6 +10481,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 4.886922}
 --- !u!1 &1484928117
 GameObject:
@@ -10601,6 +10646,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495019358}
   m_Mesh: {fileID: -5032403928219591316, guid: c77a6a6ea7e748a45b81317c13fa5ebe, type: 3}
+--- !u!1 &1507198162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1507198164}
+  - component: {fileID: 1507198163}
+  m_Layer: 0
+  m_Name: ProjectilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1507198163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507198162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f018a16ea327b154eba4786f62c48e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolable: {fileID: 6428966770867673809, guid: 45cf37638ca9ec64aacf5f89e3ad259a, type: 3}
+--- !u!4 &1507198164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507198162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508134536
 GameObject:
   m_ObjectHideFlags: 0
@@ -10843,6 +10932,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 2.0943952}
 --- !u!1 &1548830189
 GameObject:
@@ -11146,7 +11236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592552924
 GameObject:
@@ -11389,6 +11479,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.87266463, y: 5.2359877}
 --- !u!1 &1632326460
 GameObject:
@@ -12301,7 +12392,7 @@ Transform:
   - {fileID: 965119754}
   - {fileID: 1508134537}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745562524
 GameObject:
@@ -12380,7 +12471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1759726191
 GameObject:
@@ -12431,6 +12522,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.5235988, y: 2.3561945}
 --- !u!1 &1771983684
 GameObject:
@@ -12859,7 +12951,7 @@ Transform:
   m_Children:
   - {fileID: 1662408824}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 29.494}
 --- !u!1 &1838700243
 GameObject:
@@ -13153,6 +13245,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 3.926991}
 --- !u!1 &1948962783
 GameObject:
@@ -13202,6 +13295,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: 0.5235988, y: 3.1415927}
 --- !u!1 &1955142587
 GameObject:
@@ -13251,6 +13345,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.5235988, y: 3.1415927}
 --- !u!1 &1966410569
 GameObject:
@@ -13616,7 +13711,7 @@ Transform:
   - {fileID: 203080720}
   - {fileID: 1560055071}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010546478
 GameObject:
@@ -14022,6 +14117,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.87266463, y: 5.2359877}
 --- !u!1 &2067835026
 GameObject:
@@ -14102,6 +14198,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.17453294, y: 5.585054}
 --- !u!1 &2086538749
 GameObject:
@@ -14296,6 +14393,7 @@ MonoBehaviour:
   sphereRadius: 7.5
   movementSpeed: 0
   allowCorrection: 0
+  correctOthers: 1
   startingCoordinates: {x: -0.87266463, y: 3.1415927}
 --- !u!1 &2107171296
 GameObject:
@@ -14487,7 +14585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4321686339752711944, guid: 77a3570529383854cb22f9c89a383c34, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4321686339752711944, guid: 77a3570529383854cb22f9c89a383c34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14529,9 +14627,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4321686339752711947, guid: 77a3570529383854cb22f9c89a383c34, type: 3}
-      propertyPath: allowCorrection
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4321686339752711950, guid: 77a3570529383854cb22f9c89a383c34, type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 1507198163}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a3570529383854cb22f9c89a383c34, type: 3}
