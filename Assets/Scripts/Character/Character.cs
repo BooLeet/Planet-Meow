@@ -6,8 +6,34 @@ using UnityEngine;
 [RequireComponent(typeof(SphericalMovement))]
 public abstract class Character : MonoBehaviour
 {
-    private Damageable damageable;
-    [HideInInspector] public SphericalMovement movement;
+    private Damageable _damageable;
+    protected Damageable damageable
+    {
+        get
+        {
+            if (_damageable == null)
+            {
+                _damageable = GetComponent<Damageable>();
+            }
+
+            return _damageable;
+        }
+    }
+
+    private SphericalMovement _movement;
+    public SphericalMovement movement
+    {
+        get
+        {
+            if (_movement == null)
+            {
+                _movement = GetComponent<SphericalMovement>();
+            }
+
+            return _movement;
+        }
+    }
+
     public float moveSpeed = 5;
 
     public bool isDead
@@ -19,8 +45,6 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void Start()
     {
-        damageable = GetComponent<Damageable>();
-        movement = GetComponent<SphericalMovement>();
         damageable.OnDeath += HandleDeath;
     }
 

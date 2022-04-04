@@ -35,7 +35,6 @@ public class Projectile : MonoBehaviour
 
         sphericalMovement.SetLat(coordinates.x);
         sphericalMovement.SetLon(coordinates.y);
-        sphericalMovement.startingCoordinates = coordinates;
 
         sphericalMovement.SetTrueBearing(bearing);
 

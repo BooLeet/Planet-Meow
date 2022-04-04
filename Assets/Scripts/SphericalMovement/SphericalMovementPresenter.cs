@@ -5,46 +5,44 @@ public class SphericalMovementPresenter : MonoBehaviour
     public SphericalMovement model;
     public Vector3 sphereCenter;
     public float forwardCoordinatesDistance = 0.2f;
+    public bool presentRotation = true;
 
     void Start()
     {
-        model.OnBearingChanged += OnBearingChanged;
-        model.OnCoordinatesChanged += UpdatePosition;
+        model.OnBearingChanged += UpdateTransform;
+        model.OnCoordinatesChanged += UpdateTransform;
 
-        UpdatePosition();
-        UpdateRotation();
+        UpdateTransform();
     }
 
     private void OnDestroy()
     {
-        model.OnBearingChanged -= OnBearingChanged;
-        model.OnCoordinatesChanged -= UpdatePosition;
+        model.OnBearingChanged -= UpdateTransform;
+        model.OnCoordinatesChanged -= UpdateTransform;
     }
 
-    private void OnBearingChanged()
+    private void UpdateTransform()
     {
+        UpdatePosition();
         UpdateRotation();
     }
 
     public void UpdateRotation()
     {
+        if (!presentRotation)
+        {
+            return;
+        }
+
         Vector2 forwardCoordinates = model.GetForwardCoordinates(forwardCoordinatesDistance);
-        Vector3 forward = GetCarthesianPosition(forwardCoordinates.x, forwardCoordinates.y);
-        Vector3 up = GetCarthesianPosition(model.lat, model.lon);
+        Vector3 forward = SphericalMovement.GetCarthesianPosition(forwardCoordinates.x, forwardCoordinates.y);
+        Vector3 up = model.GetCarthesianPosition();
 
         transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(forward, up), up);
     }
 
     public void UpdatePosition()
     {
-        transform.position = sphereCenter + model.sphereRadius * GetCarthesianPosition(model.lat, model.lon);
-    }
-
-    private Vector3 GetCarthesianPosition(float lat, float lon)
-    {
-        return new Vector3(
-            Mathf.Cos(lat) * Mathf.Sin(lon),
-            Mathf.Sin(lat),
-            Mathf.Cos(lat) * Mathf.Cos(lon));
+        transform.position = sphereCenter + model.sphereRadius * model.GetCarthesianPosition();
     }
 }

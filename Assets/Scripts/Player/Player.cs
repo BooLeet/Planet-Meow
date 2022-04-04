@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Player : Character
 {
@@ -7,7 +8,7 @@ public class Player : Character
     public float smoothTurnParameter = 10;
     public float smoothMoveParameter = 10;
     private float targetBearing;
-    private float currentBearing;
+    private float currentMovementBearing;
     private float targetMoveSpeed;
 
     [Header("Attack")]
@@ -23,7 +24,14 @@ public class Player : Character
         private set;
     } = true;
 
+    public float currentAttackBearing
+    {
+        get;
+        private set;
+    }
+
     public event Action OnAttack;
+    public event Action OnAttackBearingChanged;
 
     void Update()
     {
@@ -32,9 +40,11 @@ public class Player : Character
             return;
         }
 
-        currentBearing = Mathf.LerpAngle(currentBearing, targetBearing, Time.deltaTime * smoothTurnParameter);
-        movement.SetConditionalBearingDegrees(currentBearing);
+        currentMovementBearing = Mathf.LerpAngle(currentMovementBearing, targetBearing, Time.deltaTime * smoothTurnParameter);
+        movement.SetConditionalBearingDegrees(currentMovementBearing);
         movement.movementSpeed = Mathf.Lerp(movement.movementSpeed, targetMoveSpeed, Time.deltaTime * smoothMoveParameter);
+
+        UpdateAttackBearing();
     }
 
     public void Move(Vector2 input)
@@ -53,18 +63,47 @@ public class Player : Character
 
     public void Attack()
     {
-        if (!canAttack)
+        if (!canAttack || EnemyRegistry.GetEnemies() == null || EnemyRegistry.GetEnemies().Count == 0)
         {
             return;
         }
 
         Projectile projectile = projectilePool.Depool().GetComponent<Projectile>();
-        projectile.Setup(this, attackDamage, projectileSpeed, projectileLifeTime, movement.GetForwardCoordinates(projectileSpawnDistance), movement.currentBearing);
+        projectile.Setup(this, attackDamage, projectileSpeed, projectileLifeTime, movement.GetDestination(currentAttackBearing, projectileSpawnDistance), currentAttackBearing);
 
         canAttack = false;
         SmoothInterpolator.StartInterpolation(gameObject, attackDelay, null, AllowAttack);
 
         OnAttack?.Invoke();
+    }
+
+    private void UpdateAttackBearing()
+    {
+        HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
+        if (enemies == null || enemies.Count == 0)
+        {
+            SetAttackBearing(currentMovementBearing);
+        }
+
+        Enemy closestEnemy = null;
+        float distance = float.MaxValue;
+        foreach (Enemy enemy in enemies)
+        {
+            float currentDistance = movement.GetDistance(movement.currentCoordinates, enemy.movement.currentCoordinates);
+            if (currentDistance < distance)
+            {
+                closestEnemy = enemy;
+                distance = currentDistance;
+            }
+        }
+
+        SetAttackBearing(movement.GetBearing(closestEnemy.movement.currentCoordinates));
+    }
+
+    private void SetAttackBearing(float val)
+    {
+        currentAttackBearing = val;
+        OnAttackBearingChanged?.Invoke();
     }
 
     private void AllowAttack()

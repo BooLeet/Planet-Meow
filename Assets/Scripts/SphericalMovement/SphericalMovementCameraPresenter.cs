@@ -35,7 +35,7 @@ public class SphericalMovementCameraPresenter : MonoBehaviour
     {
         targetPosition = sphereCenter + (model.sphereRadius + cameraHeight) * GetCarthesianPosition(model.lat, model.lon);
 
-        Vector2 forwardCoordinates = model.GetDestinationCoordinates(cameraBearing * Mathf.Deg2Rad + model.azimuthCorrection, forwardCoordinatesDistance);
+        Vector2 forwardCoordinates = model.GetDestination(cameraBearing * Mathf.Deg2Rad + model.azimuthCorrection, forwardCoordinatesDistance);
         Vector3 forward = GetCarthesianPosition(forwardCoordinates.x, forwardCoordinates.y);
         Vector3 up = GetCarthesianPosition(model.lat, model.lon);
 

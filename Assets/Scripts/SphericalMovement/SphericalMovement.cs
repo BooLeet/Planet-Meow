@@ -51,10 +51,15 @@ public class SphericalMovement : MonoBehaviour
 
     public event Action<SphericalMovement> OnCollision;
 
+    private bool coordinatesSet = false;
+
     private void Start()
     {
-        SetLat(startingCoordinates.x);
-        SetLon(startingCoordinates.y);
+        if (!coordinatesSet)
+        {
+            SetLat(startingCoordinates.x);
+            SetLon(startingCoordinates.y);
+        }
 
         SphericalMovementRegistry.Register(this);
     }
@@ -76,7 +81,7 @@ public class SphericalMovement : MonoBehaviour
             return;
         }
 
-        Vector2 newCoordinates = GetDestinationCoordinates(bearing, distance);
+        Vector2 newCoordinates = GetDestination(bearing, distance);
 
         float finalBearing = (GetBearing(newCoordinates, currentCoordinates) + PI) % (2 * PI);
         azimuthCorrection += finalBearing - bearing;
@@ -89,20 +94,25 @@ public class SphericalMovement : MonoBehaviour
 
     public Vector2 GetForwardCoordinates(float distance)
     {
-        return GetDestinationCoordinates(currentBearing, distance);
+        return GetDestination(currentBearing, distance);
     }
 
-    public Vector2 GetDestinationCoordinates(float bearing, float distance)
+    public Vector2 GetDestination(float bearing, float distance)
     {
         float angle = distance / sphereRadius;
-        float latDestination = Asin(Sin(lat) * Cos(angle) + Cos(lat) * Sin(angle) * Cos(bearing));
-        float lonDestination = lon + Atan2(Sin(bearing) * Sin(angle) * Cos(lat), Cos(angle) - Sin(lat) * Sin(latDestination));
+        return GetDestination(currentCoordinates, bearing, angle);
+    }
+
+    public static Vector2 GetDestination(Vector2 start ,float bearing, float angle)
+    {
+        float latDestination = Asin(Sin(start.x) * Cos(angle) + Cos(start.x) * Sin(angle) * Cos(bearing));
+        float lonDestination = start.y + Atan2(Sin(bearing) * Sin(angle) * Cos(start.x), Cos(angle) - Sin(start.x) * Sin(latDestination));
         lonDestination = (lonDestination + 3 * PI) % (2 * PI) - PI;
 
         return new Vector2(latDestination, lonDestination);
     }
 
-    private static float TrimAngleRad(float val)
+    public static float TrimAngleRad(float val)
     {
         val %= 2 * PI;
         if (val < 0)
@@ -116,6 +126,11 @@ public class SphericalMovement : MonoBehaviour
     public static float GetBearing(Vector2 start, Vector2 end)
     {
         return TrimAngleRad(Atan2(Sin(end.y - start.y) * Cos(end.x), Cos(start.x) * Sin(end.x) - Sin(start.x) * Cos(end.x) * Cos(end.y - start.y)));
+    }
+
+    public float GetBearing(Vector2 target)
+    {
+        return GetBearing(currentCoordinates, target);
     }
 
     public float GetDistance(Vector2 start, Vector2 end)
@@ -152,6 +167,7 @@ public class SphericalMovement : MonoBehaviour
 
     public void SetLat(float val)
     {
+        coordinatesSet = true;
         Vector3 temp = currentCoordinates;
         temp.x = val;
         currentCoordinates = temp;
@@ -159,6 +175,7 @@ public class SphericalMovement : MonoBehaviour
 
     public void SetLon(float val)
     {
+        coordinatesSet = true;
         Vector3 temp = currentCoordinates;
         temp.y = val;
         currentCoordinates = temp;
@@ -167,5 +184,21 @@ public class SphericalMovement : MonoBehaviour
     public void InvokeOnCollision(SphericalMovement other)
     {
         OnCollision?.Invoke(other);
+    }
+
+    public Vector3 GetCarthesianPosition()
+    {
+        return new Vector3(
+            Cos(lat) * Sin(lon),
+            Sin(lat),
+            Cos(lat) * Cos(lon));
+    }
+
+    public static Vector3 GetCarthesianPosition(float lat, float lon)
+    {
+        return new Vector3(
+            Cos(lat) * Sin(lon),
+            Sin(lat),
+            Cos(lat) * Cos(lon));
     }
 }

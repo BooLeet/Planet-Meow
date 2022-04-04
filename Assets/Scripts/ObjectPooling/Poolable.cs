@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Poolable : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class Poolable : MonoBehaviour
     public event Action OnDepooled;
     public event Action OnEnpooled;
 
+    public UnityEvent OnDepooledEvent;
+    public UnityEvent OnEnpooledEvent;
+
     public void Depool(ObjectPool pool)
     {
         this.pool = pool;
         OnDepooled?.Invoke();
+        OnDepooledEvent?.Invoke();
         gameObject.SetActive(true);
     }
 
@@ -20,5 +25,6 @@ public class Poolable : MonoBehaviour
         gameObject.SetActive(false);
         pool.Enpool(this);
         OnEnpooled?.Invoke();
+        OnEnpooledEvent?.Invoke();
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4281984769939113175}
   - component: {fileID: 6428966770867673809}
   - component: {fileID: 1493707395607258250}
+  - component: {fileID: 8385470633623387530}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   model: {fileID: 9076911285794479719}
   sphereCenter: {x: 0, y: 0, z: 0}
   forwardCoordinatesDistance: 0.2
+  presentRotation: 1
 --- !u!114 &6428966770867673809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f848cc3f5e22c4544a22ee70ae707257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDepooledEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnpooledEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1493707395607258250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &8385470633623387530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880563730405705165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254eab348ccc00f45aac0eab2f0e0207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 1493707395607258250}
+  hitEffectPrefab: {fileID: 7766482566473335266, guid: 7535a917e19b65d449451768cfb3b169, type: 3}
 --- !u!1001 &913828499656972730
 PrefabInstance:
   m_ObjectHideFlags: 0
