@@ -4773,7 +4773,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 2100000, guid: 97da50f862d120246b93982b01d45fec, type: 2}
+  - {fileID: 2100000, guid: 9afc2d509b7ee6a45993c2b78650c37f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4832,6 +4832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+  particleCount: 30
   particles: {fileID: 4965503946521106446}
   OnEffectEnd:
     m_PersistentCalls:
@@ -4878,3 +4879,4 @@ MonoBehaviour:
   OnEnpooledEvent:
     m_PersistentCalls:
       m_Calls: []
+  lateDepoolEventInvocation: 0

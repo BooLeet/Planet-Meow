@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Poolable))]
-public class Enemy : Character
+public abstract class Enemy : Character
 {
     private Poolable poolable;
+    public float followDistance = 0;
 
     protected override void Start()
     {
@@ -34,7 +35,8 @@ public class Enemy : Character
     public void UpdateTargetPosition(Vector2 coordinates)
     {
         movement.SetTrueBearing(movement.GetBearing(coordinates));
-        movement.movementSpeed = moveSpeed;
+        float distance = movement.GetDistance(movement.currentCoordinates, coordinates);
+        movement.movementSpeed = distance < followDistance? 0 : moveSpeed;
     }
 
     public void StopMovement()

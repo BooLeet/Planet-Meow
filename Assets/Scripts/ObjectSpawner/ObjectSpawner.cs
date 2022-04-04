@@ -23,6 +23,13 @@ public class ObjectSpawner : MonoBehaviour
         return GetInstance()._SpawnObject(prefab);
     }
 
+    public static Poolable SpawnObject(Poolable prefab, Vector3 position)
+    {
+        Poolable poolable = GetInstance()._SpawnObject(prefab);
+        poolable.transform.position = position;
+        return poolable;
+    }
+
     private Poolable _SpawnObject(Poolable prefab)
     {
         ObjectPool pool = null;

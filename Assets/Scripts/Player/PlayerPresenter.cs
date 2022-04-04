@@ -14,22 +14,37 @@ public class PlayerPresenter : MonoBehaviour
     [Header("Animation")]
     public Animator animator;
     public string[] attackTriggers;
+    public string deathTrigger;
     private int attackTriggerIndex;
+
+    [Header("Audio")]
+    public Poolable damageAudioPrefab;
+    public Poolable attackAudioPrefab;
+
+    public Poolable damageEffectPrefab;
 
     void Start()
     {
         model.OnAttack += OnAttack;
         model.OnAttackBearingChanged += OnAttackBearingChanged;
+        model.damageable.OnDamageTaken += OnDamageTaken;
+        model.OnDeath += OnDeath;
     }
 
     private void OnDestroy()
     {
         model.OnAttack -= OnAttack;
         model.OnAttackBearingChanged -= OnAttackBearingChanged;
+        model.damageable.OnDamageTaken -= OnDamageTaken;
+        model.OnDeath -= OnDeath;
     }
 
     private void Update()
     {
+        if (model.isDead)
+        {
+            return;
+        }
         currentBearing = Mathf.LerpAngle(currentBearing, targetBearing, Time.deltaTime * smoothRotationParameter);
         UpdateRotation();
     }
@@ -38,6 +53,8 @@ public class PlayerPresenter : MonoBehaviour
     {
         animator.SetTrigger(attackTriggers[attackTriggerIndex]);
         attackTriggerIndex = (attackTriggerIndex + 1) % attackTriggers.Length;
+        
+        ObjectSpawner.SpawnObject(attackAudioPrefab, transform.position);
     }
 
     private void OnAttackBearingChanged()
@@ -52,5 +69,16 @@ public class PlayerPresenter : MonoBehaviour
         Vector3 up = model.movement.GetCarthesianPosition();
 
         transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(forward, up), up);
+    }
+
+    private void OnDamageTaken()
+    {
+        ObjectSpawner.SpawnObject(damageAudioPrefab, transform.position);
+        ObjectSpawner.SpawnObject(damageEffectPrefab, transform.position);
+    }
+
+    private void OnDeath()
+    {
+        animator.SetTrigger(deathTrigger);
     }
 }

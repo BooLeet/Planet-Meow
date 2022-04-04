@@ -112,8 +112,8 @@ Material:
     m_Colors:
     - BaseColor: {r: 0.87613654, g: 0.23113209, b: 1, a: 1}
     - EmissionColor: {r: 0, g: 0.5054107, b: 2.6701574, a: 1}
-    - InnerColor: {r: 1, g: 1, b: 1, a: 1}
-    - OutterColor: {r: 0, g: 0.69982433, b: 1, a: 1}
+    - InnerColor: {r: 0.8016093, g: 0.6933962, b: 1, a: 1}
+    - OutterColor: {r: 0.5254902, g: 0.27058825, b: 1, a: 1}
     - _BaseColor: {r: 0, g: 0.3395729, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmisColor: {r: 1, g: 1, b: 1, a: 1}

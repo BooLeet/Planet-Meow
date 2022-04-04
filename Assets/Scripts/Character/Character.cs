@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     private Damageable _damageable;
-    protected Damageable damageable
+    public Damageable damageable
     {
         get
         {

@@ -12,12 +12,24 @@ public class Poolable : MonoBehaviour
     public UnityEvent OnDepooledEvent;
     public UnityEvent OnEnpooledEvent;
 
+    public bool lateDepoolEventInvocation;
+
     public void Depool(ObjectPool pool)
     {
         this.pool = pool;
-        OnDepooled?.Invoke();
-        OnDepooledEvent?.Invoke();
+        if (!lateDepoolEventInvocation)
+        {
+            OnDepooled?.Invoke();
+            OnDepooledEvent?.Invoke();
+        }
+        
         gameObject.SetActive(true);
+
+        if (lateDepoolEventInvocation)
+        {
+            OnDepooled?.Invoke();
+            OnDepooledEvent?.Invoke();
+        }
     }
 
     public void Enpool()

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 961487625756081025}
   - component: {fileID: 961487625756081024}
   - component: {fileID: 961487625756081031}
-  - component: {fileID: 961487625756081026}
   - component: {fileID: 961487625756081027}
   - component: {fileID: 8674462780584128126}
   - component: {fileID: 2393012008458896671}
+  - component: {fileID: 975346473606792412}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -72,19 +72,6 @@ MonoBehaviour:
   sphereCenter: {x: 0, y: 0, z: 0}
   forwardCoordinatesDistance: 0.2
   presentRotation: 1
---- !u!114 &961487625756081026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961487625756081030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c295baa4aba124b4f9a06b02d648533c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &961487625756081027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +100,7 @@ MonoBehaviour:
   OnDepooledEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 961487625756081026}
+      - m_Target: {fileID: 975346473606792412}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: Register
         m_Mode: 1
@@ -128,7 +115,7 @@ MonoBehaviour:
   OnEnpooledEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 961487625756081026}
+      - m_Target: {fileID: 975346473606792412}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: Unregister
         m_Mode: 1
@@ -140,6 +127,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  lateDepoolEventInvocation: 0
 --- !u!114 &2393012008458896671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +140,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb5f7d07150f704589be140f539d360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 961487625756081026}
+  model: {fileID: 975346473606792412}
   deathEffectPrefab: {fileID: 7766482566473335266, guid: 39364ffd601ab2146abeed53b78c39ef, type: 3}
+  deathSoundPrefab: {fileID: 7856898245629818743, guid: b61913fda1296d04982bf0a12b81fbd8, type: 3}
   deathEffectSource: {fileID: 6833462353449276315}
+--- !u!114 &975346473606792412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961487625756081030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a55523461bee474b91a0b23938faf07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  followDistance: 0
+  explosionDamage: 10
 --- !u!1 &1094195856569746129
 GameObject:
   m_ObjectHideFlags: 0

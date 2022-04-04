@@ -6,6 +6,7 @@ public class EnemyPresenter : MonoBehaviour
 {
     public Enemy model;
     public Poolable deathEffectPrefab;
+    public Poolable deathSoundPrefab;
     public Transform deathEffectSource;
 
     void Start()
@@ -20,7 +21,8 @@ public class EnemyPresenter : MonoBehaviour
 
     private void OnDeath()
     {
-        Poolable deathEffect = ObjectSpawner.SpawnObject(deathEffectPrefab);
-        deathEffect.transform.position = deathEffectSource.position;
+        ObjectSpawner.SpawnObject(deathEffectPrefab, deathEffectSource.position);
+        
+        ObjectSpawner.SpawnObject(deathSoundPrefab, deathEffectSource.position);
     }
 }

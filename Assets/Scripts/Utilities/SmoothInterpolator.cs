@@ -7,14 +7,16 @@ public class SmoothInterpolator : MonoBehaviour
     private float timeCounter;
     private Action<float> valueChanger;
     private Action OnComplete;
+    private Action OnInterupt;
     private bool complete = false;
 
-    public static SmoothInterpolator StartInterpolation(GameObject targetObject,float time, Action<float> valueChanger, Action OnComplete = null)
+    public static SmoothInterpolator StartInterpolation(GameObject targetObject,float time, Action<float> valueChanger, Action OnComplete = null, Action OnInterupt = null)
     {
         SmoothInterpolator interpolator = targetObject.AddComponent<SmoothInterpolator>();
         interpolator.time = time;
         interpolator.valueChanger = valueChanger;
         interpolator.OnComplete = OnComplete;
+        interpolator.OnInterupt = OnInterupt;
 
         return interpolator;
     }
@@ -37,5 +39,12 @@ public class SmoothInterpolator : MonoBehaviour
             OnComplete?.Invoke();
             Destroy(this);
         }
+    }
+
+    public void Interupt()
+    {
+        complete = true;
+        OnInterupt?.Invoke();
+        Destroy(this);
     }
 }

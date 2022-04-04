@@ -33,6 +33,18 @@ public class Player : Character
     public event Action OnAttack;
     public event Action OnAttackBearingChanged;
 
+    protected override void Start()
+    {
+        base.Start();
+        OnDeath += StopMovement;
+    }
+
+    protected override void OnDestroy()
+    {
+        OnDeath -= StopMovement;
+        base.OnDestroy();
+    }
+
     void Update()
     {
         if (isDead)
@@ -109,5 +121,10 @@ public class Player : Character
     private void AllowAttack()
     {
         canAttack = true;
+    }
+
+    private void StopMovement()
+    {
+        movement.movementSpeed = 0; 
     }
 }

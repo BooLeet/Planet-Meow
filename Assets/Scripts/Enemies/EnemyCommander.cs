@@ -18,10 +18,21 @@ public class EnemyCommander : MonoBehaviour
     void Start()
     {
         registry = EnemyRegistry.GetInstance();
+        player.OnDeath += OnPlayerDeath;
+    }
+
+    private void OnDestroy()
+    {
+        player.OnDeath -= OnPlayerDeath;
     }
 
     void Update()
     {
+        if (player.isDead)
+        {
+            return;
+        }
+
         HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
         if (enemies == null)
         {
@@ -53,5 +64,19 @@ public class EnemyCommander : MonoBehaviour
     public void SetTargetEnemyCount(int val)
     {
         targetEnemyCount = val;
+    }
+
+    private void OnPlayerDeath()
+    {
+        HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
+        if (enemies == null)
+        {
+            return;
+        }
+
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.damageable.Kill();
+        }
     }
 }

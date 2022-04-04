@@ -39,7 +39,17 @@ public class Damageable : MonoBehaviour
         OnRevive?.Invoke();
     }
 
+    public void Kill()
+    {
+        TakeDamage(currentHealth + 1);
+    }
+
     public void TakeDamage(float amount)
+    {
+        StartCoroutine(Utility.CallOnNextFrame(delegate { _TakeDamage(amount); }));
+    }
+
+    private void _TakeDamage(float amount)
     {
         if (isDead)
         {
@@ -54,5 +64,6 @@ public class Damageable : MonoBehaviour
             OnDeath?.Invoke();
         }
         SetHealth(newHealth);
+        OnDamageTaken?.Invoke();
     }
 }

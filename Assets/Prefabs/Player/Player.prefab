@@ -168,6 +168,10 @@ MonoBehaviour:
   attackTriggers:
   - SpellRight
   - SpellLeft
+  deathTrigger: Stumble
+  damageAudioPrefab: {fileID: 7856898245629818743, guid: 25b74329c79516a43ac0daf7b6be493e, type: 3}
+  attackAudioPrefab: {fileID: 7856898245629818743, guid: 285cb3cec8ac39148b6ce372c7f8c18d, type: 3}
+  damageEffectPrefab: {fileID: 7766482566473335266, guid: e1f091d8d9c7e294f8369252fd27f284, type: 3}
 --- !u!1001 &4321686340222010067
 PrefabInstance:
   m_ObjectHideFlags: 0
