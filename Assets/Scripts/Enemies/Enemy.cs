@@ -6,7 +6,14 @@ public abstract class Enemy : Character
 {
     private Poolable poolable;
     public float followDistance = 0;
+    public float distanceSpeedMultiplier = 1.3f;
+    public float speedMultiplierDistance = 5;
+    public float respawnTime = 5;
+
+    private float timer;
+
     public static event Action<Enemy> OnDeathStatic;
+    public event Action OnDespawn;
 
     protected override void Start()
     {
@@ -19,6 +26,16 @@ public abstract class Enemy : Character
     {
         base.OnDestroy();
         OnDeath -= HandleDeath;
+    }
+
+    public void UpdateDespawnTimer(float deltaTime)
+    {
+        timer += deltaTime;
+        if (timer > respawnTime)
+        {
+            poolable.Enpool();
+            OnDespawn?.Invoke();
+        }
     }
 
     private void HandleDeath()
@@ -35,6 +52,7 @@ public abstract class Enemy : Character
     public void Register()
     {
         damageable.Revive();
+        timer = 0;
         EnemyRegistry.Register(this);
     }
 
@@ -42,7 +60,8 @@ public abstract class Enemy : Character
     {
         movement.SetTrueBearing(movement.GetBearing(coordinates));
         float distance = movement.GetDistance(movement.currentCoordinates, coordinates);
-        movement.movementSpeed = distance < followDistance? 0 : moveSpeed;
+
+        movement.movementSpeed = distance < followDistance? 0 : moveSpeed * Mathf.Lerp(1, distanceSpeedMultiplier, Mathf.InverseLerp(followDistance, speedMultiplierDistance, distance));
     }
 
     public void StopMovement()

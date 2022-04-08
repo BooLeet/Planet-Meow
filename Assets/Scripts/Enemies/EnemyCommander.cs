@@ -52,6 +52,7 @@ public class EnemyCommander : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.UpdateTargetPosition(player.movement.currentCoordinates);
+            enemy.UpdateDespawnTimer(Time.deltaTime);
         }
     }
 
@@ -60,7 +61,8 @@ public class EnemyCommander : MonoBehaviour
         Enemy enemy = enemyPool.Depool().GetComponent<Enemy>();
         float lat = -player.movement.currentCoordinates.x;
         float lon = SphericalMovement.TrimAngleRad(player.movement.currentCoordinates.y + Mathf.PI);
-        Vector2 spawnCoordinates = SphericalMovement.GetDestination(new Vector2(lat, lon), Random.value * 2 * Mathf.PI, Random.value * Mathf.PI / 2);
+        float bearing = SphericalMovement.TrimAngleRad(player.movement.currentBearing + Mathf.PI + Random.Range(-1f, 1f) * Mathf.PI / 6f);
+        Vector2 spawnCoordinates = SphericalMovement.GetDestination(new Vector2(lat, lon), bearing, Random.value * Mathf.PI / 2);
         enemy.movement.SetLat(spawnCoordinates.x);
         enemy.movement.SetLon(spawnCoordinates.y);
     }

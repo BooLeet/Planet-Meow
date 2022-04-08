@@ -127,14 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba6719e8f6edfa429d808e72a5dc9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 6
   smoothTurnParameter: 30
   smoothMoveParameter: 10
   attackDamage: 10
-  projectileSpeed: 20
+  projectileSpeed: 15
   projectileLifeTime: 1
   projectileSpawnDistance: 0.4
-  attackDelay: 0.15
+  attackDelay: 0.2
   projectilePool: {fileID: 1507198163}
 --- !u!114 &7881087119371029133
 MonoBehaviour:
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8ceba917788734380271c6ce7dcf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
 --- !u!114 &8669680405009305397
 MonoBehaviour:
   m_ObjectHideFlags: 0
