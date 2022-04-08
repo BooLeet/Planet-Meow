@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMobileInputPresenter : MonoBehaviour
 {
     public PlayerMobileInput model;
     public RectTransform joystickBase;
     public RectTransform joystickHandle;
+    [Space]
+    public CanvasGroup canvasGroup;
+    [Space]
+    public Button pauseButton;
 
     void Start()
     {
@@ -12,8 +17,12 @@ public class PlayerMobileInputPresenter : MonoBehaviour
         model.OnMove += OnMove;
         model.OnAnchorChanged += OnAnchorChanged;
         model.OnMoveEnd += OnMoveEnd;
+        model.OnEnableChanged += UpdateCanvasGroup;
+
+        pauseButton.onClick.AddListener(model.InvokePause);
 
         joystickBase.gameObject.SetActive(false);
+        UpdateCanvasGroup();
     }
 
     private void OnDestroy()
@@ -22,6 +31,9 @@ public class PlayerMobileInputPresenter : MonoBehaviour
         model.OnAnchorChanged -= OnAnchorChanged;
         model.OnMove -= OnMove;
         model.OnMoveEnd -= OnMoveEnd;
+        model.OnEnableChanged -= UpdateCanvasGroup;
+
+        pauseButton.onClick.RemoveListener(model.InvokePause);
     }
 
     private void OnAnchorChanged()
@@ -43,4 +55,11 @@ public class PlayerMobileInputPresenter : MonoBehaviour
     {
         joystickBase.gameObject.SetActive(false);
     }
+
+    private void UpdateCanvasGroup()
+    {
+        canvasGroup.alpha = model.isEnabled ? 1 : 0;
+        canvasGroup.interactable = model.isEnabled;
+    }
+
 }

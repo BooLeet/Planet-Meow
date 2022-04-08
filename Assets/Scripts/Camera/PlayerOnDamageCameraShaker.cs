@@ -15,7 +15,10 @@ public class PlayerOnDamageCameraShaker : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.damageable.OnDamageTaken -= Shake;
+        if (player != null)
+        {
+            player.damageable.OnDamageTaken -= Shake;
+        }
     }
 
     private void Shake()

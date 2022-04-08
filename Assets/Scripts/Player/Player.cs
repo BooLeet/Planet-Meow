@@ -8,7 +8,11 @@ public class Player : Character
     public float smoothTurnParameter = 10;
     public float smoothMoveParameter = 10;
     private float targetBearing;
-    private float currentMovementBearing;
+    public float currentMovementBearing
+    {
+        get;
+        private set;
+    }
     private float targetMoveSpeed;
 
     [Header("Attack")]
@@ -25,6 +29,12 @@ public class Player : Character
     } = true;
 
     public float currentAttackBearing
+    {
+        get;
+        private set;
+    }
+
+    public bool isTargetingEnemy
     {
         get;
         private set;
@@ -94,7 +104,8 @@ public class Player : Character
         HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
         if (enemies == null || enemies.Count == 0)
         {
-            SetAttackBearing(currentMovementBearing);
+            isTargetingEnemy = false;
+            return;
         }
 
         Enemy closestEnemy = null;
@@ -109,6 +120,7 @@ public class Player : Character
             }
         }
 
+        isTargetingEnemy = true;
         SetAttackBearing(movement.GetBearing(closestEnemy.movement.currentCoordinates));
     }
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,22 +12,27 @@ public class EnemyCommander : MonoBehaviour
     {
         get;
         private set;
-    } = 20;
+    } = 0;
+
+    public bool isEnabled
+    {
+        get;
+        private set;
+    }
 
     void Start()
     {
         registry = EnemyRegistry.GetInstance();
-        player.OnDeath += OnPlayerDeath;
     }
 
     private void OnDestroy()
     {
-        player.OnDeath -= OnPlayerDeath;
+
     }
 
     void Update()
     {
-        if (player.isDead)
+        if (!isEnabled)
         {
             return;
         }
@@ -66,7 +70,7 @@ public class EnemyCommander : MonoBehaviour
         targetEnemyCount = val;
     }
 
-    private void OnPlayerDeath()
+    public void KillAll()
     {
         HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
         if (enemies == null)
@@ -78,5 +82,39 @@ public class EnemyCommander : MonoBehaviour
         {
             enemy.damageable.Kill();
         }
+    }
+
+    public void StopEnemies()
+    {
+        HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
+        if (enemies == null)
+        {
+            return;
+        }
+
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.StopMovement();
+        }
+    }
+
+    public void SetEnable(bool val)
+    {
+        if (isEnabled == val)
+        {
+            return;
+        }
+
+        isEnabled = val;
+    }
+
+    public void Enable()
+    {
+        SetEnable(true);
+    }
+
+    public void Disable()
+    {
+        SetEnable(false);
     }
 }

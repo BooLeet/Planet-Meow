@@ -45,7 +45,15 @@ public class PlayerPresenter : MonoBehaviour
         {
             return;
         }
-        currentBearing = Mathf.LerpAngle(currentBearing, targetBearing, Time.deltaTime * smoothRotationParameter);
+
+        if (model.isTargetingEnemy)
+        {
+            currentBearing = Mathf.LerpAngle(currentBearing, targetBearing, Time.deltaTime * smoothRotationParameter);
+        }
+        else
+        {
+            currentBearing = model.movement.currentBearing;
+        }
         UpdateRotation();
     }
 

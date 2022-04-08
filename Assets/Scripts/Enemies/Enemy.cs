@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Poolable))]
@@ -7,18 +6,25 @@ public abstract class Enemy : Character
 {
     private Poolable poolable;
     public float followDistance = 0;
+    public static event Action<Enemy> OnDeathStatic;
 
     protected override void Start()
     {
         base.Start();
         poolable = GetComponent<Poolable>();
-        OnDeath += poolable.Enpool;
+        OnDeath += HandleDeath;
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        OnDeath -= poolable.Enpool;
+        OnDeath -= HandleDeath;
+    }
+
+    private void HandleDeath()
+    {
+        OnDeathStatic?.Invoke(this);
+        poolable.Enpool();
     }
 
     public void Unregister()

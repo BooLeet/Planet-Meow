@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioCrossFade : MonoBehaviour
@@ -26,5 +24,10 @@ public class AudioCrossFade : MonoBehaviour
     {
         firstSource.volume = 1 - fadeParameter;
         secondSource.volume = fadeParameter;
+    }
+
+    public void ChangeFadeParameter(float value)
+    {
+        fadeParameter = Mathf.Clamp01(value);
     }
 }

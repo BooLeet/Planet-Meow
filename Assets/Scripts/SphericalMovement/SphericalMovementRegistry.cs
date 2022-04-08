@@ -12,6 +12,12 @@ public class SphericalMovementRegistry : MonoBehaviour
 
     private List<SphericalMovement> registeredMovements = new List<SphericalMovement>();
 
+    public bool isPaused
+    {
+        get;
+        set;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -26,6 +32,11 @@ public class SphericalMovementRegistry : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isPaused)
+        {
+            return;
+        }
+
         bool[,] collisions = new bool[registeredMovements.Count, registeredMovements.Count];
 
         for (int i = 0; i < registeredMovements.Count; ++i)
