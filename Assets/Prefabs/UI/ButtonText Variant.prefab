@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &990510650540998190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469125188398654648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &5590100486257806678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759231883367388401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &9072110562072853345
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +264,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8469125188398654648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7372570841684245576, guid: e1299627fd19d4e4682b9b56622ebc1e, type: 3}
+  m_PrefabInstance: {fileID: 1430106611060136176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1759231883367388401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 842963065040980993, guid: e1299627fd19d4e4682b9b56622ebc1e, type: 3}
+  m_PrefabInstance: {fileID: 1430106611060136176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2059336148564831781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1102530003142096597, guid: e1299627fd19d4e4682b9b56622ebc1e, type: 3}

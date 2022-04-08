@@ -5,6 +5,7 @@ using UnityEngine;
 public class FPSCounter : MonoBehaviour
 {
     float deltaTime = 0.0f;
+    public float height = 100;
     public bool show = false;
     public Font font;
 
@@ -32,9 +33,9 @@ public class FPSCounter : MonoBehaviour
 
         GUIStyle style = new GUIStyle();
 
-        Rect rect = new Rect(10, 0, w, h * 4 / 100);
+        Rect rect = new Rect(10, 0, w, h * 4 / height);
         style.alignment = TextAnchor.UpperLeft;
-        style.fontSize = h * 2 / 100;
+        style.fontSize = (int)(h * 2 / height);
         if (font)
         {
             style.font = font;

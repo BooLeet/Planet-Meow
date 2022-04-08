@@ -11,11 +11,12 @@ public class GameManagerPresenter : MonoBehaviour
     public MenuManager menuManager;
     public int mainMenuIndex = 0;
     public int resultsMenuIndex = 1;
+    public MenuPlayButtonText playButton;
 
     [Header("Player UI")]
     public PlayerUIPresenter playerUI;
     public BubbleText pointsText;
-    public GameRecordsPresenter recordsPresenter;
+    public GameRecordsResultPresenter recordsPresenter;
 
     [Header("Buttons")]
     public Button[] playButtons;
@@ -75,6 +76,8 @@ public class GameManagerPresenter : MonoBehaviour
         UpdatePlayerUI();
         UpdatePlayerInput();
         UpdateMusic();
+
+        playButton.UpdateRecord(model.gameRecords.points);
     }
 
     private void UpdateCamera()

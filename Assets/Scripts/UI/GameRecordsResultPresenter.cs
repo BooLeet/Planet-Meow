@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameRecordsPresenter : MonoBehaviour
+public class GameRecordsResultPresenter : MonoBehaviour
 {
     public BubbleText bubbleText;
     public string pointsKey = "Points";
