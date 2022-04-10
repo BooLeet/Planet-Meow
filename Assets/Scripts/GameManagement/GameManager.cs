@@ -101,26 +101,34 @@ public class GameManager : MonoBehaviour
         OnPlayStateChange?.Invoke();
     }
 
-    public void PauseGame()
+    public bool PauseGame()
     {
-        SetPauseValue(true);
+        return SetPauseValue(true);
     }
 
-    public void UnpauseGame()
+    public bool UnpauseGame()
     {
-        SetPauseValue(false);
+        return SetPauseValue(false);
     }
 
-    public void SetPauseValue(bool val)
+    public bool SetPauseValue(bool val)
     {
         if (isPaused == val)
         {
-            return;
+            return false;
         }
+
+        if (val && !isPlaying)
+        {
+            return false;
+        }
+
         isPaused = val;
         enemyCommander.StopEnemies();
         enemyCommander.SetEnable(!isPaused);
         OnPauseChange?.Invoke();
+
+        return true;
     }
 
     public void QuitGame()

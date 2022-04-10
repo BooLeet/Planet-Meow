@@ -15,14 +15,13 @@ public abstract class PlayerInput : MonoBehaviour
 
     public event Action OnEnableChanged;
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (!isEnabled)
         {
             player.Move(Vector2.zero);
             return;
         }
-
 
         player.Move(GetMoveInput());
 

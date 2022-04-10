@@ -1,9 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerKeyboardInput : PlayerInput
 {
+    public KeyCode pauseButton = KeyCode.Escape;
+
+    protected override void Update()
+    {
+        if (Input.GetKeyDown(pauseButton))
+        {
+            InvokePause();
+        }
+        base.Update();
+    }
+
     protected override Vector2 GetMoveInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -11,6 +20,6 @@ public class PlayerKeyboardInput : PlayerInput
 
     protected override bool GetAttack()
     {
-        return Input.GetMouseButton(0);
+        return GetMoveInput().magnitude > 0;
     }
 }

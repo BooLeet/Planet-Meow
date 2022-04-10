@@ -53,6 +53,18 @@ public static class Utility{
         Cursor.visible = false;
     }
 
+    public static void SetEnableCursor(bool enable)
+    {
+        if (enable)
+        {
+            EnableCursor();
+        }
+        else
+        {
+            DisableCursor();
+        }
+    }
+
     public static void PlayAudioClipAtPoint(AudioClip clip, Vector3 position, Transform parent, float spatialBlend, AudioMixerGroup mixerGroup, bool dontDestroyOnLoad)
     {
         if (clip == null)

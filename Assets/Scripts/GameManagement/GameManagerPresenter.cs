@@ -78,6 +78,8 @@ public class GameManagerPresenter : MonoBehaviour
         UpdateMusic();
 
         playButton.UpdateRecord(model.gameRecords.points);
+
+        Utility.SetEnableCursor(!model.isPlaying || model.isPaused);
     }
 
     private void UpdateCamera()
@@ -131,7 +133,9 @@ public class GameManagerPresenter : MonoBehaviour
 
     private void PauseGame()
     {
-        model.PauseGame();
-        menuManager.ShowPanel(mainMenuIndex);
+        if (model.PauseGame())
+        {
+            menuManager.ShowPanel(mainMenuIndex);
+        }
     }
 }

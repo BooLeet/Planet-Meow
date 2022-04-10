@@ -74,7 +74,7 @@ public class Player : Character
         float inputMagnitude = Mathf.Clamp01(input.magnitude);
         if (inputMagnitude == 0)
         {
-            movement.movementSpeed = 0;
+            targetMoveSpeed = movement.movementSpeed = 0;
             return;
         }
 

@@ -25,10 +25,6 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 6878955874140945939, guid: 4cc8daa469cd1f8449dbc40d681284e4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 77
-      objectReference: {fileID: 0}
     - target: {fileID: 8469125187948596136, guid: 4cc8daa469cd1f8449dbc40d681284e4, type: 3}
       propertyPath: m_Name
       value: ButtonTextSetting Variant

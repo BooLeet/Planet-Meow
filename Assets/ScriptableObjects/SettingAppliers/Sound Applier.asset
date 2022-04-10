@@ -16,4 +16,5 @@ MonoBehaviour:
   mixerFloatKey: SFXVolume
   onKey: on
   offKey: off
-  onValue: 0.5
+  maxSettingValue: 10
+  maxVolume: 0.25
