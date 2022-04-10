@@ -1,4 +1,4 @@
-# MagiCat-2
+# Planet Meow
  
 A colorful, endless, spherical arcade game, where you, as a cat, try to survive as long as you can against an endless horde of angry black blobs!
 
