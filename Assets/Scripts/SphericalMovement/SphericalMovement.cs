@@ -11,11 +11,19 @@ public class SphericalMovement : MonoBehaviour
     public bool correctOthers = true;
 
     public Vector2 startingCoordinates;
-    
+
+    private Vector2 _currentCoordinates;
     public Vector2 currentCoordinates
     {
-        get;
-        private set;
+        get
+        {
+            return _currentCoordinates;
+        }
+        private set
+        {
+            _currentCoordinates = value;
+            OnCoordinatesChanged?.Invoke();
+        }
     }
 
     public float lat
@@ -89,7 +97,6 @@ public class SphericalMovement : MonoBehaviour
         SetTrueBearing(currentConditionalBearing + azimuthCorrection);
 
         currentCoordinates = newCoordinates;
-        OnCoordinatesChanged?.Invoke();
     }
 
     public Vector2 GetForwardCoordinates(float distance)

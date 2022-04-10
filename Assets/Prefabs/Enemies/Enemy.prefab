@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &8416414990491359503
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960207119015859940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1866a820109676b4f89e080619094e0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &961487625756081030
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +163,9 @@ MonoBehaviour:
   deathEffectSource: {fileID: 6833462353449276315}
   deathEffectPrefab: {fileID: 7766482566473335266, guid: 39364ffd601ab2146abeed53b78c39ef, type: 3}
   deathSoundPrefab: {fileID: 7856898245629818743, guid: b61913fda1296d04982bf0a12b81fbd8, type: 3}
-  teleportEffectPrefab: {fileID: 7766482566473335266, guid: cb4ba09a110d9994fb3b8667ec06698f, type: 3}
+  animator: {fileID: 8416414990491359503}
+  spawnTrigger: Spawn
+  despawnTrigger: Despawn
 --- !u!114 &975346473606792412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +183,8 @@ MonoBehaviour:
   distanceSpeedMultiplier: 2
   speedMultiplierDistance: 5
   respawnTime: 5
+  respawnPause: 0.41666666
+  respawnDistance: 5
   explosionDamage: 10
 --- !u!1 &1094195856569746129
 GameObject:
@@ -250,6 +273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13ebf9f998645049bc40272fbae8f60, type: 3}
+--- !u!1 &960207119015859940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1324564748617278, guid: c13ebf9f998645049bc40272fbae8f60, type: 3}
+  m_PrefabInstance: {fileID: 961487625887092954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &956880367493610930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4616269805350248, guid: c13ebf9f998645049bc40272fbae8f60, type: 3}

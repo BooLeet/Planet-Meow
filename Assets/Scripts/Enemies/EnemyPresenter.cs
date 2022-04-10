@@ -9,18 +9,28 @@ public class EnemyPresenter : MonoBehaviour
     [Space]
     public Poolable deathEffectPrefab;
     public Poolable deathSoundPrefab;
-    public Poolable teleportEffectPrefab;
+    [Space]
+    public Animator animator;
+    public string spawnTrigger = "Spawn";
+    public string despawnTrigger = "Despawn";
 
     void Start()
     {
+        model.OnSpawn += OnSpawn;
         model.OnDeath += OnDeath;
         model.OnDespawn += OnDespawn;
     }
 
     private void OnDestroy()
     {
+        model.OnSpawn -= OnSpawn;
         model.OnDeath -= OnDeath;
         model.OnDespawn -= OnDespawn;
+    }
+
+    private void OnSpawn()
+    {
+        animator.SetTrigger(spawnTrigger);
     }
 
     private void OnDeath()
@@ -32,6 +42,6 @@ public class EnemyPresenter : MonoBehaviour
 
     private void OnDespawn()
     {
-        ObjectSpawner.SpawnObject(teleportEffectPrefab, deathEffectSource.position);
+        animator.SetTrigger(despawnTrigger);
     }
 }

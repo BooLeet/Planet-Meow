@@ -17,7 +17,7 @@ MonoBehaviour:
   - groupName: game
     words:
     - key: Points
-      val: points
+      val: Points
     - key: Record
       val: Record
     - key: New Record!
@@ -47,7 +47,7 @@ MonoBehaviour:
     - key: Play
       val: Play
     - key: Menu
-      val: menu
+      val: Menu
     - key: Restart
       val: Restart
     - key: Settings

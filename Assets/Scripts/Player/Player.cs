@@ -112,6 +112,10 @@ public class Player : Character
         float distance = float.MaxValue;
         foreach (Enemy enemy in enemies)
         {
+            if (!enemy.isActive)
+            {
+                continue;
+            }
             float currentDistance = movement.GetDistance(movement.currentCoordinates, enemy.movement.currentCoordinates);
             if (currentDistance < distance)
             {
