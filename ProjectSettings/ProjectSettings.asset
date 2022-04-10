@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Maksim Chmutov
-  productName: MagiCat 2
+  productName: Planet Meow
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: ef0bb63609d40aa4ba7c756c4af2f272, type: 3}
+  - logo: {fileID: 21300000, guid: 39838a6148fa0c441aa35efcda9c5431, type: 3}
     duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -272,7 +272,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ef0bb63609d40aa4ba7c756c4af2f272, type: 3}
+      m_Icon: {fileID: 2800000, guid: 39838a6148fa0c441aa35efcda9c5431, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

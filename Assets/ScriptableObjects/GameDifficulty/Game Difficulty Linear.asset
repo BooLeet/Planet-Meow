@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b9649de856ae64f8cb06b72fdb9aa7, type: 3}
   m_Name: Game Difficulty Linear
   m_EditorClassIdentifier: 
-  growthTime: 120
+  growthTime: 240
   minValue: 20
-  maxValue: 60
+  maxValue: 40
