@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 700992260}
-  pauseButton: 27
+  pauseButton: 9
 --- !u!4 &67466772
 Transform:
   m_ObjectHideFlags: 0
@@ -12915,6 +12915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button - Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 8469125187948596136, guid: 4cc8daa469cd1f8449dbc40d681284e4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8469125187948596139, guid: 4cc8daa469cd1f8449dbc40d681284e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14126,7 +14130,7 @@ MonoBehaviour:
     - 8
     - 9
     - 10
-    defaultValueIndex: 10
+    defaultValueIndex: 1
     applier: {fileID: 11400000, guid: 141b6ad268680cb4eb272ed4d5fd59a9, type: 2}
   - key: sounds
     values:
@@ -14141,7 +14145,7 @@ MonoBehaviour:
     - 8
     - 9
     - 10
-    defaultValueIndex: 10
+    defaultValueIndex: 1
     applier: {fileID: 11400000, guid: 24e3099d8d1f5ee439abc20f58d07e64, type: 2}
   - key: fps
     values:
@@ -15807,7 +15811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b60d6ea2983b4419c04be595fcd11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCode: 27
+  keyCode: 9
   OnKeyDown:
     m_PersistentCalls:
       m_Calls: []
@@ -16248,7 +16252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b60d6ea2983b4419c04be595fcd11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCode: 27
+  keyCode: 9
   OnKeyDown:
     m_PersistentCalls:
       m_Calls: []
@@ -17002,7 +17006,7 @@ AudioSource:
   m_GameObject: {fileID: 1988299204}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7a289c51c5a654d42bf0936e5adc141c, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9270ec05c9f0be64193e30dc65a4bff3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
@@ -17822,7 +17826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b60d6ea2983b4419c04be595fcd11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCode: 27
+  keyCode: 9
   OnKeyDown:
     m_PersistentCalls:
       m_Calls: []
