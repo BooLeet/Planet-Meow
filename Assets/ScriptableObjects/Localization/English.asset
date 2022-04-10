@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f0dd143d25fa04e95e97f462c28623, type: 3}
+  m_Name: English
+  m_EditorClassIdentifier: 
+  languageName: en
+  wordGroups:
+  - groupName: game
+    words:
+    - key: Points
+      val: points
+    - key: Record
+      val: Record
+    - key: New Record!
+      val: New Record!
+  - groupName: settingNames
+    words:
+    - key: music
+      val: Music
+    - key: sounds
+      val: Sounds
+    - key: fps
+      val: Show FPS
+    - key: lang
+      val: Language
+  - groupName: settigns
+    words:
+    - key: on
+      val: On
+    - key: off
+      val: Off
+    - key: en
+      val: EN
+    - key: ru
+      val: RU
+  - groupName: menu
+    words:
+    - key: Play
+      val: Play
+    - key: Menu
+      val: menu
+    - key: Restart
+      val: Restart
+    - key: Settings
+      val: Settings
+    - key: Attributions
+      val: Attributions
+    - key: Back
+      val: Back
+    - key: Quit
+      val: Quit

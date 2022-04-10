@@ -37,13 +37,16 @@ public class EnemyCommander : MonoBehaviour
             return;
         }
 
-        HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
-        if (enemies == null)
+        HashSet<Enemy> enemiesSet = EnemyRegistry.GetEnemies();
+        if (enemiesSet == null)
         {
             return;
         }
 
-        int enemiesToSpawn = targetEnemyCount - enemies.Count;
+        Enemy[] enemies = new Enemy[enemiesSet.Count];
+        enemiesSet.CopyTo(enemies);
+
+        int enemiesToSpawn = targetEnemyCount - enemies.Length;
         for (int i = 0; i < enemiesToSpawn; ++i)
         {
             SpawnEnemy();

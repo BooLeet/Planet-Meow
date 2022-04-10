@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingsManagerPresenter : MonoBehaviour
@@ -17,7 +15,23 @@ public class SettingsManagerPresenter : MonoBehaviour
 
     void Start()
     {
-        
+        model.OnSettingsChanged += UpdateButtonTexts;
+
+        SetupButtons();
+    }
+
+    private void OnDestroy()
+    {
+        model.OnSettingsChanged -= UpdateButtonTexts;
+    }
+
+    private void SetupButtons()
+    {
+        foreach (SettingButtonInfo buttonInfo in buttonInfos)
+        {
+            buttonInfo.button.Setup(this, model.GetSetting(buttonInfo.settingKey));
+        }
+        UpdateButtonTexts();
     }
 
     private void UpdateButtonTexts()

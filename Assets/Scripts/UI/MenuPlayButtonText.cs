@@ -1,7 +1,6 @@
-using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuPlayButtonText : MonoBehaviour
+public class MenuPlayButtonText : BaseObjectLocalizer
 {
     public Text text; 
     public string playKey = "Play";
@@ -19,12 +18,12 @@ public class MenuPlayButtonText : MonoBehaviour
         UpdateText();
     }
 
-    public void UpdateText()
+    protected override void UpdateText()
     {
         string str = Localizer.Localize(playKey);
         if (record != 0)
         {
-            str += $" | {Localizer.Localize(recordKey)}: {record}";
+            str += $"{separator}{Localizer.Localize(recordKey)}: {record}";
         }
         text.text = str;
         text.fontSize = record > 0 ? recordFontSize : noRecordFontSize;

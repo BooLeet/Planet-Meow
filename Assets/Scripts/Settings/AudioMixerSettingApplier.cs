@@ -8,11 +8,13 @@ public class AudioMixerSettingApplier : SettingApplier
     public string mixerFloatKey;
     public string onKey = "on";
     public string offKey = "off";
-    public float onValue = 1;
+    public int maxSettingValue = 10;
+    public float maxVolume = 0.5f;
 
     public override void ApplySetting(string value)
     {
-        float val = value == offKey ? 0 : 1;
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Clamp(val, 0.0001f, 1)) * 20);
+        float val = int.Parse(value);
+        float volume = maxVolume * (float)(val / maxSettingValue);
+        audioMixer.SetFloat(mixerFloatKey, Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1)) * 20);
     }
 }

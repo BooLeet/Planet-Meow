@@ -1,13 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FPSCounter : MonoBehaviour
 {
+    public static FPSCounter instance;
+
     float deltaTime = 0.0f;
     public float height = 100;
     public bool show = false;
     public Font font;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     void Update()
     {

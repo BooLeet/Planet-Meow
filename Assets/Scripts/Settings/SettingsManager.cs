@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
@@ -18,7 +19,9 @@ public class SettingsManager : MonoBehaviour
         private set;
     }
 
-    private void Awake()
+    public event Action OnSettingsChanged;
+
+    private void Start()
     {
         settingsContainer = SettingsContainer.Load();
         foreach (Setting setting in settings)
@@ -42,6 +45,20 @@ public class SettingsManager : MonoBehaviour
         settingsContainer.Save();
 
         ApplySetting(key, val);
+        OnSettingsChanged?.Invoke();
+    }
+
+    public Setting GetSetting(string key)
+    {
+        foreach (Setting setting in settings)
+        {
+            if(setting.key == key)
+            {
+                return setting;
+            }
+        }
+
+        return null;
     }
 
     public string GetSettingValue(string key)
