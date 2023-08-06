@@ -1,13 +1,19 @@
 using System;
 using UnityEngine;
 
-public class PlayerMobileInput : PlayerInput
+public class PlayerMobileInput : MonoBehaviour, IPlayerInput
 {
     public MobileDragArea mobileDragArea;
     public Canvas canvas;
 
     public float defaultScreenWidth = 1080;
     public float joystickRadius = 100;
+
+    public bool isEnabled
+    {
+        get;
+        private set;
+    }
 
     public Vector2 movePoint
     {
@@ -21,10 +27,15 @@ public class PlayerMobileInput : PlayerInput
         private set;
     }
 
+    private bool isDragging;
+
     public event Action OnMoveBegin;
     public event Action OnMove;
     public event Action OnMoveEnd;
     public event Action OnAnchorChanged;
+
+    public event Action OnPause;
+    public event Action OnEnableChanged;
 
     private void Start()
     {
@@ -55,6 +66,7 @@ public class PlayerMobileInput : PlayerInput
 
     private void OnDragBegin()
     {
+        isDragging = true;
         anchorPoint = mobileDragArea.dragBeginPosition;
         movePoint = anchorPoint;
         OnAnchorChanged?.Invoke();
@@ -63,12 +75,13 @@ public class PlayerMobileInput : PlayerInput
 
     private void OnDragEnd()
     {
+        isDragging = false;
         anchorPoint = movePoint = Vector2.zero;
         OnMoveEnd?.Invoke();
         OnAnchorChanged?.Invoke();
     }
 
-    protected override Vector2 GetMoveInput()
+    public Vector2 GetMoveInput()
     {
         Vector2 input = movePoint - anchorPoint;
         if (input.magnitude == 0)
@@ -79,8 +92,34 @@ public class PlayerMobileInput : PlayerInput
         return input.normalized;
     }
 
-    protected override bool GetAttack()
+    public bool GetAttack()
     {
-        return GetMoveInput().magnitude > 0;
+        return GetMoveInput().magnitude > 0 && EnemyRegistry.GetEnemies() != null && EnemyRegistry.GetEnemies().Count > 0;
+    }
+
+    public bool GetAutoAim()
+    {
+        return isDragging;
+    }
+
+    public Vector2 GetLookInput()
+    {
+        return Vector2.zero;
+    }
+
+    public void SetEnable(bool val)
+    {
+        if (isEnabled == val)
+        {
+            return;
+        }
+
+        isEnabled = val;
+        OnEnableChanged?.Invoke();
+    }
+
+    public void InvokePause()
+    {
+        OnPause?.Invoke();
     }
 }

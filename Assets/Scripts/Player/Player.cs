@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : Character
 {
@@ -65,8 +65,6 @@ public class Player : Character
         currentMovementBearing = Mathf.LerpAngle(currentMovementBearing, targetBearing, Time.deltaTime * smoothTurnParameter);
         movement.SetConditionalBearingDegrees(currentMovementBearing);
         movement.movementSpeed = Mathf.Lerp(movement.movementSpeed, targetMoveSpeed, Time.deltaTime * smoothMoveParameter);
-
-        UpdateAttackBearing();
     }
 
     public void Move(Vector2 input)
@@ -85,7 +83,7 @@ public class Player : Character
 
     public void Attack()
     {
-        if (!canAttack || EnemyRegistry.GetEnemies() == null || EnemyRegistry.GetEnemies().Count == 0)
+        if (!canAttack)
         {
             return;
         }
@@ -99,7 +97,7 @@ public class Player : Character
         OnAttack?.Invoke();
     }
 
-    private void UpdateAttackBearing()
+    public void AutoAim()
     {
         HashSet<Enemy> enemies = EnemyRegistry.GetEnemies();
         if (enemies == null || enemies.Count == 0)
@@ -128,6 +126,18 @@ public class Player : Character
         SetAttackBearing(movement.GetBearing(closestEnemy.movement.currentCoordinates));
     }
 
+    public void ManualAim(Vector2 input)
+    {
+        if (input.magnitude == 0)
+        {
+            SetAttackBearing(currentMovementBearing * Mathf.Deg2Rad + movement.azimuthCorrection);
+            return;
+        }
+
+        float angle = Vector2.SignedAngle(Vector2.up, input)  * Mathf.Deg2Rad + movement.azimuthCorrection;
+        SetAttackBearing(angle);
+    }
+
     private void SetAttackBearing(float val)
     {
         currentAttackBearing = val;
@@ -141,6 +151,6 @@ public class Player : Character
 
     private void StopMovement()
     {
-        movement.movementSpeed = 0; 
+        movement.movementSpeed = 0;
     }
 }

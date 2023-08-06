@@ -43,10 +43,7 @@ public class PlayerCameraPositioner : MonoBehaviour
     {
         TransfromLerpParameter(ref lerpParameter);
 
-        Vector3 targetPosition = player.transform.position +
-            player.transform.forward * playerLocalOffset.z +
-            player.transform.right * playerLocalOffset.x +
-            player.transform.up * playerLocalOffset.y;
+        Vector3 targetPosition = player.transform.TransformPoint(playerLocalOffset);
 
         Quaternion targetRotation = Quaternion.LookRotation(player.transform.position + player.transform.up * playerHeightOffset - cameraTransform.position, player.transform.up);
         cameraTransform.position = Vector3.Lerp(interpolationStartPosition, targetPosition, lerpParameter);

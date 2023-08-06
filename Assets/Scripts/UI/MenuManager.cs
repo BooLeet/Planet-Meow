@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -36,6 +37,12 @@ public class MenuManager : MonoBehaviour
         foreach (MenuPanel menuPanel in menuPanels)
         {
             menuPanel.panel.SetActive(menuPanel == targetPanel);
+        }
+
+        Button buttonToSelect = targetPanel.panel.GetComponentInChildren<Button>();
+        if (buttonToSelect != null)
+        {
+            EventSystem.current.SetSelectedGameObject(buttonToSelect.gameObject);
         }
     }
 
