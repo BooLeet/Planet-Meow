@@ -1,19 +1,13 @@
 using System;
 using UnityEngine;
 
-public class PlayerMobileInput : MonoBehaviour, IPlayerInput
+public class PlayerMobileInput : PlayerInput
 {
     public MobileDragArea mobileDragArea;
     public Canvas canvas;
 
     public float defaultScreenWidth = 1080;
     public float joystickRadius = 100;
-
-    public bool isEnabled
-    {
-        get;
-        private set;
-    }
 
     public Vector2 movePoint
     {
@@ -27,15 +21,10 @@ public class PlayerMobileInput : MonoBehaviour, IPlayerInput
         private set;
     }
 
-    private bool isDragging;
-
     public event Action OnMoveBegin;
     public event Action OnMove;
     public event Action OnMoveEnd;
     public event Action OnAnchorChanged;
-
-    public event Action OnPause;
-    public event Action OnEnableChanged;
 
     private void Start()
     {
@@ -66,7 +55,6 @@ public class PlayerMobileInput : MonoBehaviour, IPlayerInput
 
     private void OnDragBegin()
     {
-        isDragging = true;
         anchorPoint = mobileDragArea.dragBeginPosition;
         movePoint = anchorPoint;
         OnAnchorChanged?.Invoke();
@@ -75,13 +63,12 @@ public class PlayerMobileInput : MonoBehaviour, IPlayerInput
 
     private void OnDragEnd()
     {
-        isDragging = false;
         anchorPoint = movePoint = Vector2.zero;
         OnMoveEnd?.Invoke();
         OnAnchorChanged?.Invoke();
     }
 
-    public Vector2 GetMoveInput()
+    protected override Vector2 GetMoveInput()
     {
         Vector2 input = movePoint - anchorPoint;
         if (input.magnitude == 0)
@@ -92,34 +79,8 @@ public class PlayerMobileInput : MonoBehaviour, IPlayerInput
         return input.normalized;
     }
 
-    public bool GetAttack()
+    protected override bool GetAttack()
     {
-        return GetMoveInput().magnitude > 0 && EnemyRegistry.GetEnemies() != null && EnemyRegistry.GetEnemies().Count > 0;
-    }
-
-    public bool GetAutoAim()
-    {
-        return isDragging;
-    }
-
-    public Vector2 GetLookInput()
-    {
-        return Vector2.zero;
-    }
-
-    public void SetEnable(bool val)
-    {
-        if (isEnabled == val)
-        {
-            return;
-        }
-
-        isEnabled = val;
-        OnEnableChanged?.Invoke();
-    }
-
-    public void InvokePause()
-    {
-        OnPause?.Invoke();
+        return GetMoveInput().magnitude > 0;
     }
 }

@@ -5,7 +5,7 @@ public class GameManagerPresenter : MonoBehaviour
 {
     public GameManager model;
     public PlayerCameraPositioner cameraPositioner;
-    public PlayerController playerController;
+    public PlayerInput playerInput;
 
     [Header("Menu")]
     public MenuManager menuManager;
@@ -38,8 +38,7 @@ public class GameManagerPresenter : MonoBehaviour
 
         quitButton.onClick.AddListener(model.QuitGame);
 
-        playerController.Init();
-        playerController.OnPause += PauseGame;
+        playerInput.OnPause += PauseGame;
 
         HandlePlayStateChange();
     }
@@ -56,7 +55,7 @@ public class GameManagerPresenter : MonoBehaviour
         }
         quitButton.onClick.RemoveListener(model.QuitGame);
 
-        playerController.OnPause -= PauseGame;
+        playerInput.OnPause -= PauseGame;
     }
 
     private void PlayOrUnpause()
@@ -122,7 +121,7 @@ public class GameManagerPresenter : MonoBehaviour
 
     private void UpdatePlayerInput()
     {
-        playerController.SetEnable(model.isPlaying && !model.isPaused);
+        playerInput.SetEnable(model.isPlaying && !model.isPaused);
     }
 
     private void HandleKillCountChange()
